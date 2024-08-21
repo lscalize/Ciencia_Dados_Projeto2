@@ -1,0 +1,20 @@
+# 1. Criando coluna de mês
+df_apres_exec['Mes'] = df_apres_exec['Order Date'].dt.month
+print(df_apres_exec.head(2))
+
+# 2. Vendas por mês
+df_apres_exec.groupby('Mes')['Sales'].sum().plot(kind='bar')
+plt.title('Vendas por mês', fontsize=20, fontweight='bold', color='green')
+plt.xlabel('Meses')
+plt.ylabel('Vendas')
+plt.xticks(ticks=np.arange(0, 12), labels=['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'])
+plt.show()
+
+# Transformando índices em colunas
+df_pivot_m = df_apres_exec.pivot_table(values='Sales',
+                                        index='Ano',
+                                        columns='Mes',
+                                        aggfunc='sum',
+                                        margins=True,
+                                        margins_name='Total')
+print(df_pivot_m)
