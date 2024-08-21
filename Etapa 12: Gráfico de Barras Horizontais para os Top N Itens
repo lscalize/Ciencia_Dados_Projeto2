@@ -1,0 +1,32 @@
+# Exibindo as primeiras linhas do DataFrame
+df_apres_exec.head(2)
+
+# Agrupando e somando as vendas por nome do produto e ordenando em ordem decrescente
+itens = df_apres_exec.groupby("Product Name")["Sales"].sum().sort_values(ascending=False)
+
+# Resetando o índice para criar um DataFrame
+itens = itens.reset_index()
+
+# Exibindo as primeiras linhas do DataFrame de itens
+itens.head(2)
+
+# Ordenando os itens por vendas e selecionando os top 10
+itens_top10 = itens.sort_values("Sales", ascending=False)
+itens_top10.head(10)
+
+# Selecionando os top 10 itens
+top_10_itens = itens.head(10)
+
+# Exibindo os top 10 itens
+top_10_itens
+
+# Definindo o número de itens top N
+n = 10
+top_n_itens = itens.head(n)
+
+# Criando o gráfico de barras horizontais
+fig, ax = plt.subplots(figsize=(16, 6))
+ax.barh(top_n_itens['Product Name'].values, top_n_itens['Sales'].values, align='center')
+ax.invert_yaxis()  # Inverte o eixo Y para exibir as etiquetas de cima para baixo
+ax.set_title('Itens mais vendidos', fontsize=16, fontweight='bold')
+plt.show()
