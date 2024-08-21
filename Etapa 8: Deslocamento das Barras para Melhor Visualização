@@ -1,0 +1,28 @@
+# Filtra os dados para o ano de 2015 e obtém os valores de vendas e meses
+soma_mes[soma_mes.Ano == 2015]
+soma_mes[soma_mes.Ano == 2015].Sales.values
+soma_mes[soma_mes.Ano == 2015].Mes.values
+
+fig, ax = plt.subplots(figsize=(9, 4))
+ax.bar(soma_mes[soma_mes.Ano == 2015].Mes.values,
+       soma_mes[soma_mes.Ano == 2015].Sales.values,
+       color='red')
+plt.show()
+
+fig, ax = plt.subplots(figsize=(9, 4))
+ax.bar(soma_mes[soma_mes.Ano == 2015].Mes.values,
+       soma_mes[soma_mes.Ano == 2015].Sales.values,
+       color='red', label=2015)
+ax.bar(soma_mes[soma_mes.Ano == 2016].Mes.values,
+       soma_mes[soma_mes.Ano == 2016].Sales.values,
+       color='black', label=2016)
+plt.show()
+
+fig, ax = plt.subplots(figsize=(9, 4))
+ax.bar(soma_mes[soma_mes.Ano == 2015].Mes.values - 0.4 / 2,
+       soma_mes[soma_mes.Ano == 2015].Sales.values,
+       color='red', label=2015, width=0.4)
+ax.bar(soma_mes[soma_mes.Ano == 2016].Mes.values + 0.4 / 2,
+       soma_mes[soma_mes.Ano == 2016].Sales.values,
+       color='black', label=2016, width=0.4)
+plt.show()
