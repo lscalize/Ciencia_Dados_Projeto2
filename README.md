@@ -6,9 +6,13 @@ Este projeto visa analisar, modelar e visualizar dados de vendas de uma empresa 
 ## Base de dados
 Fonte: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting
 
-## Descrição
+## Objetivos
 
-Este projeto realiza a análise e modelagem de dados para um conjunto de vendas, utilizando Python. 
+Trazer respostas para as seguintes perguntas:
+
+- Como foi a **venda** nesse período?
+- Qual foi a **categoria mais vendida**?
+- Qual foi o **item mais vendido**?
 
 ## Etapas do Código
 
