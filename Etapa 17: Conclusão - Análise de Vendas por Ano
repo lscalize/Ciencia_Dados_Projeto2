@@ -1,0 +1,26 @@
+# Agrupando as vendas por ano
+soma_ano = df_apres_exec.groupby("Ano")['Sales'].sum()
+
+# Criando o gráfico de barras para as vendas anuais
+fig, ax = plt.subplots(figsize=(9,5))
+
+ax.bar(soma_ano.index, soma_ano.values, color='green')
+
+# Título e rótulos do gráfico
+ax.set_title('Vendas por ano', fontsize=20, fontweight='bold', color='green')
+ax.set_xticks([2015, 2016, 2017, 2018])
+ax.set_yticks([0, 780000])
+ax.yaxis.set_visible(False)
+
+# Incluindo rótulos de dados nas barras
+for valor in range(0, len(soma_ano)):
+    ax.annotate('{:,.0f}'.format(soma_ano.values[valor]).replace(',', '.'),
+                (soma_ano.index[valor], soma_ano.values[valor]),
+                ha="center", xytext=(0,5), textcoords="offset points", fontsize=12)
+
+# Removendo traços desnecessários ao redor do gráfico
+ax.spines['top'].set_visible(False)
+ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+plt.show()
