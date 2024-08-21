@@ -1,8 +1,12 @@
-# Análise e Modelagem de Dados
+# Análise, Modelagem e Visualização de Dados
+
+## Visão Geral
+Este projeto visa analisar, modelar e visualizar dados de vendas de uma empresa fictícia ao longo de 4 anos. Inclui importação e análise de dados, tratamento de valores nulos, criação de gráficos e tabelas pivot, e análise temporal. Utilizando Python e bibliotecas como `pandas` e `matplotlib`, criamos gráficos para entender as tendências de vendas por ano, mês, categoria e produto.
+
 
 ## Descrição
 
-Este projeto realiza a análise e modelagem de dados para um conjunto de vendas, utilizando Python. Inclui importação e análise de dados, tratamento de valores nulos, criação de gráficos e tabelas pivot, e análise temporal.
+Este projeto realiza a análise e modelagem de dados para um conjunto de vendas, utilizando Python. 
 
 ## Etapas do Código
 
@@ -21,6 +25,11 @@ Este projeto realiza a análise e modelagem de dados para um conjunto de vendas,
 4. **Visualização de Dados**
    - Cria gráficos de barras para visualização de vendas anuais e mensais.
    - Adiciona títulos, rótulos e ajusta estilos.
+  
+5. **Análise de Vendas por Ano:** Gráfico de barras para visualizar as vendas totais por ano.
+6. **Análise de Vendas por Mês e Ano:** Comparação das vendas mensais de cada ano.
+7. **Análise de Vendas por Categoria:** Comparação das vendas por categoria ao longo dos anos.
+8. **Análise dos Itens Mais Vendidos:** Gráficos de barras horizontais mostrando os produtos mais vendidos.
 
 ## Requisitos
 
@@ -28,17 +37,15 @@ Este projeto realiza a análise e modelagem de dados para um conjunto de vendas,
 - numpy
 - matplotlib
 
+
+
 ## Como Executar
 
 1. Clone o repositório.
 2. Instale as dependências com `pip install -r requirements.txt`.
 3. Execute o script Python para realizar a análise e visualização.
 
-## Exemplos
+## Conclusões
+Os dados revelam um crescimento constante nas vendas ao longo dos anos, com a categoria 'Technology' sendo a mais promissora. A análise detalhada dos itens mais vendidos pode ajudar na tomada de decisões estratégicas para o inventário e promoções.
 
-- **Gráfico de Vendas Anuais:**
-   ![Vendas Anuais](link_para_o_grafico.png)
-   
-- **Tabela Pivot de Vendas por Mês e Ano:**
-   ![Tabela Pivot](link_para_a_tabela_pivot.png)
 
