@@ -1,0 +1,21 @@
+# Realizando o merge entre os top N itens e os anos
+produto_ano = pd.merge(
+    top_n_itens,
+    df_apres_exec_datas,
+    how='outer',
+    on='uniao'
+)
+
+# Exibindo o DataFrame resultante do primeiro merge
+display(produto_ano)
+
+# Realizando o segundo merge para obter as vendas correspondentes
+itens_ano_grafico = pd.merge(
+    produto_ano,
+    itens_ano,
+    how='left',
+    on=['Product Name', 'Ano']
+)
+
+# Exibindo o DataFrame resultante do segundo merge
+display(itens_ano_grafico).head()
