@@ -1,0 +1,50 @@
+# Agrupa e soma as vendas por categoria
+df_apres_exec.groupby("Category")["Sales"].sum()
+df_apres_exec.groupby(["Category", "Ano"])["Sales"].sum()
+df_apres_exec.groupby(["Category", "Ano"])["Sales"].mean()
+
+# Cria um DataFrame com a soma de vendas por categoria e ano
+categoria_ano = df_apres_exec.groupby(["Category", "Ano"])["Sales"].sum().reset_index()
+
+# Filtros para a categoria 'Furniture' e ano 2018
+categoria_ano[categoria_ano.Category == 'Furniture'].Ano.values
+categoria_ano[categoria_ano.Category == 'Furniture'].Sales.values
+categoria_ano[categoria_ano.Ano == 2018]
+
+# Cria gráfico para categorias
+fig, ax = plt.subplots(figsize=(16, 6))
+wid = 0.2
+
+ax.bar(categoria_ano[categoria_ano.Category == 'Furniture'].Ano.values - wid - wid / 2,
+       categoria_ano[categoria_ano.Category == 'Furniture'].Sales.values,
+       color='blue', label='Furniture', width=wid)
+ax.bar(categoria_ano[categoria_ano.Category == 'Office Supplies'].Ano.values + wid / 2,
+       categoria_ano[categoria_ano.Category == 'Office Supplies'].Sales.values,
+       color='red', label='Office Supplies', width=wid)
+ax.bar(categoria_ano[categoria_ano.Category == 'Technology'].Ano.values - wid / 2,
+       categoria_ano[categoria_ano.Category == 'Technology'].Sales.values,
+       color='green', label='Technology', width=wid)
+
+for i in np.arange(0, 4):
+    ax.annotate('{:,.0f}k'.format(categoria_ano[categoria_ano.Category == 'Furniture'].Sales.values[i] / 1000).replace(',', '.'),
+                xy=((categoria_ano[categoria_ano.Category == 'Furniture'].Ano.values[i] - wid - wid / 2),
+                    (categoria_ano[categoria_ano.Category == 'Furniture'].Sales.values[i])),
+                ha="center", xytext=(0, 10), va="top", textcoords="offset points", fontsize=10)
+    ax.annotate('{:,.0f}k'.format(categoria_ano[categoria_ano.Category == 'Office Supplies'].Sales.values[i] / 1000).replace(',', '.'),
+                xy=((categoria_ano[categoria_ano.Category == 'Office Supplies'].Ano.values[i] + wid / 2),
+                    (categoria_ano[categoria_ano.Category == 'Office Supplies'].Sales.values[i])),
+                ha="center", xytext=(0, 10), va="top", textcoords="offset points", fontsize=10)
+    ax.annotate('{:,.0f}k'.format(categoria_ano[categoria_ano.Category == 'Technology'].Sales.values[i] / 1000).replace(',', '.'),
+                xy=((categoria_ano[categoria_ano.Category == 'Technology'].Ano.values[i] - wid / 2),
+                    (categoria_ano[categoria_ano.Category == 'Technology'].Sales.values[i])),
+                ha="center", xytext=(0, 10), va="top", textcoords="offset points", fontsize=10)
+
+ax.spines['top'].set_visible(False)
+ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.set_xticks([2015, 2016, 2017, 2018])
+ax.set_xticklabels([2015, 2016, 2017, 2018])
+ax.set_yticks([0, 100000, 200000])
+ax.yaxis.set_visible(False)
+ax.legend()
+plt.show()
