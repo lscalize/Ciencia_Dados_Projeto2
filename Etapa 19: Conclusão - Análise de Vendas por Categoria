@@ -1,0 +1,29 @@
+fig, ax = plt.subplots(figsize=(16,6))
+wid = 0.2
+
+# Gráfico de barras para cada categoria
+for categoria, cor in zip(['Furniture', 'Office Supplies', 'Technology'], ['blue', 'red', 'green']):
+    ax.bar(categoria_ano[categoria_ano.Category == categoria].Ano.values + wid/2,
+           categoria_ano[categoria_ano.Category == categoria].Sales.values,
+           color=cor,
+           label=categoria,
+           width=wid)
+
+# Anotando valores no gráfico
+for i in range(4):
+    for categoria, deslocamento in zip(['Furniture', 'Office Supplies', 'Technology'], [-wid-wid/2, wid/2, -wid/2]):
+        ax.annotate('{:,.0f}k'.format(categoria_ano[categoria_ano.Category == categoria].Sales.values[i]/1000).replace(',', '.'),
+                    (categoria_ano[categoria_ano.Category == categoria].Ano.values[i] + deslocamento,
+                     categoria_ano[categoria_ano.Category == categoria].Sales.values[i]),
+                    ha="center", xytext=(0, 10), va="top", textcoords="offset points", fontsize=10)
+
+# Configurando eixos e rótulos
+ax.set_xticks([2015, 2016, 2017, 2018])
+ax.set_yticks([0, 300000])
+ax.yaxis.set_visible(False)
+ax.spines['top'].set_visible(False)
+ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.legend()
+
+plt.show()
