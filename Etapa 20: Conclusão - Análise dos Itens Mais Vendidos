@@ -1,0 +1,7 @@
+fig, ax = plt.subplots(figsize=(16,6))
+
+ax.barh(top_n_itens['Product Name'].values, top_n_itens['Sales'].values, align='center')
+ax.invert_yaxis()  # Invertendo a ordem para os itens mais vendidos aparecerem no topo
+ax.set_title('Itens mais vendidos', fontsize=16, fontweight='bold')
+
+plt.show()
