@@ -1,0 +1,30 @@
+fig, ax = plt.subplots(figsize=(16, 6))
+wid = 0.2
+
+ax.bar(soma_mes[soma_mes.Ano == 2015].Mes.values - wid - wid / 2,
+       soma_mes[soma_mes.Ano == 2015].Sales.values,
+       color='red', label=2015, width=wid)
+ax.bar(soma_mes[soma_mes.Ano == 2016].Mes.values - wid / 2,
+       soma_mes[soma_mes.Ano == 2016].Sales.values,
+       color='black', label=2016, width=wid)
+ax.bar(soma_mes[soma_mes.Ano == 2017].Mes.values + wid / 2,
+       soma_mes[soma_mes.Ano == 2017].Sales.values,
+       color='blue', label=2017, width=wid)
+ax.bar(soma_mes[soma_mes.Ano == 2018].Mes.values + wid + wid / 2,
+       soma_mes[soma_mes.Ano == 2018].Sales.values,
+       color='yellow', label=2018, width=wid)
+
+for vendas_mes in np.arange(0, 12):
+    ax.annotate('{:,.0f}k'.format(soma_mes[soma_mes.Ano == 2018].Sales.values[vendas_mes] / 1000).replace(',', '.'),
+                (soma_mes[soma_mes.Ano == 2018].Mes.values[vendas_mes] + wid + wid / 2, soma_mes[soma_mes.Ano == 2018].Sales.values[vendas_mes]),
+                ha="center", xytext=(0, +15), va="top", textcoords="offset points", fontsize=10)
+
+ax.spines['top'].set_visible(False)
+ax.spines['left'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.set_xticks(np.arange(1, 13))
+ax.set_yticks([0, 150000])
+ax.set_xticklabels(['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'])
+ax.yaxis.set_visible(False)
+ax.legend()
+plt.show()
