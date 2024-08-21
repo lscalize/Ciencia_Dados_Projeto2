@@ -1,0 +1,13 @@
+# 1. Importando a biblioteca para manipulação de datas
+import datetime as dt
+
+# 2. Convertendo colunas de datas para o formato datetime
+df_apres_exec['Order Date'] = pd.to_datetime(df_apres_exec['Order Date'], format="%d/%m/%Y")
+df_apres_exec['Ship Date'] = pd.to_datetime(df_apres_exec['Ship Date'], format="%d/%m/%Y")
+print(df_apres_exec.head(3))  # Verificando as mudanças
+
+# 3. Criando coluna para o ano e analisando vendas por ano
+df_apres_exec['Ano'] = df_apres_exec['Order Date'].dt.year
+print(df_apres_exec.groupby("Ano")['Sales'].count())
+print(df_apres_exec.groupby("Ano")['Sales'].sum())
+print(df_apres_exec.groupby("Ano")['Sales'].mean())
