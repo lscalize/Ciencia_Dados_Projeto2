@@ -1,0 +1,8 @@
+# Agrupando as vendas por 'Product Name' e 'Ano', e calculando a soma das vendas
+itens_ano = df_apres_exec.groupby(["Product Name", "Ano"])["Sales"].sum()
+
+# Reiniciando o índice para transformar a Series em DataFrame
+itens_ano = itens_ano.reset_index()
+
+# Exibindo o DataFrame resultante
+itens_ano
