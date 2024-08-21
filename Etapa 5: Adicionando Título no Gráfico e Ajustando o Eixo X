@@ -1,0 +1,18 @@
+# Plot com título e ajustes
+fig, ax = plt.subplots(figsize=(9,5))
+soma_ano = df_apres_exec.groupby("Ano")['Sales'].sum()
+ax.bar(soma_ano.index,
+       soma_ano.values,
+       color='green')
+
+# Título e rótulos
+ax.set_title('Vendas por ano', fontsize=20, fontweight='bold', color='green')
+ax.set_xlabel('Anos')
+ax.set_ylabel('Vendas em reais')
+
+# Limites e ticks
+ax.set_ylim([0, 900000])
+ax.set_xticks([2015, 2016, 2017, 2018])
+ax.tick_params(axis='x', labelsize=14)
+ax.tick_params(axis='y', labelsize=14)
+plt.show()
