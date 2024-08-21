@@ -1,0 +1,13 @@
+# Criando um DataFrame com os anos de 2015 a 2018
+df_apres_exec_datas = pd.DataFrame([2015, 2016, 2017, 2018], columns=['Ano'])
+
+# Adicionando uma coluna auxiliar para facilitar o merge
+df_apres_exec_datas['uniao'] = 'unir'
+itens['uniao'] = 'unir'
+
+# Definindo o número de top N itens a serem analisados
+n = 10
+top_n_itens = itens.head(n)
+
+# Exibindo o DataFrame dos top N itens
+top_n_itens
