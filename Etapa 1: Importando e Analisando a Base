@@ -1,0 +1,27 @@
+# 1. Importando as bibliotecas necessárias
+import pandas as pd
+import numpy as np
+
+# 2. Definindo o caminho do arquivo e carregando os dados
+apres_exec = '/content/Criando uma apresentação executiva.csv'
+df_apres_exec = pd.read_csv(apres_exec)
+
+# 3. Visualizando as primeiras e últimas linhas do DataFrame
+print(df_apres_exec.head(5))  # Mostra as primeiras 5 linhas
+print(df_apres_exec.tail(5))  # Mostra as últimas 5 linhas
+
+# 4. Verificando o tamanho e as colunas do DataFrame
+print(df_apres_exec.shape)  # Tamanho do DataFrame (linhas, colunas)
+print(df_apres_exec.columns)  # Nomes das colunas
+
+# 5. Exibindo valores únicos por coluna
+print(df_apres_exec.nunique().sort_values(ascending=False))
+
+# 6. Verificando informações sobre valores nulos e linhas duplicadas
+print(df_apres_exec.info())  # Informações gerais do DataFrame
+print(df_apres_exec.isnull().sum())  # Contagem de valores nulos por coluna
+print(df_apres_exec.duplicated().sum())  # Contagem de linhas duplicadas
+
+# 7. Descrevendo as colunas numéricas e não numéricas
+print(df_apres_exec.describe())  # Descrição das colunas numéricas
+print(df_apres_exec.describe(exclude="number"))  # Descrição das colunas não numéricas
