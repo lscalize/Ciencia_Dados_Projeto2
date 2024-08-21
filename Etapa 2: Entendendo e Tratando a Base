@@ -1,0 +1,36 @@
+# 1. Identificando e corrigindo valores nulos
+print(df_apres_exec[(df_apres_exec.City == 'Burlington') & (df_apres_exec.State == 'Vermont') & (df_apres_exec['Postal Code'].isnull())])
+
+# Corrigindo valores nulos na coluna 'Postal Code'
+df_apres_exec.loc[(df_apres_exec.City == 'Burlington') & (df_apres_exec.State == 'Vermont') & (df_apres_exec['Postal Code'].isnull()), 'Postal Code'] = 5401
+print(df_apres_exec.info())  # Verificando mudanças
+
+# 2. Remover a coluna 'Postal Code' se necessário
+# df_apres_exec = df_apres_exec.drop('Postal Code', axis=1)  # Descomente se desejar remover
+
+# 3. Criando tabelas pivot para análise
+pivot_sales_shipmode = df_apres_exec.pivot_table(values='Sales',
+                                                 index='Ship Mode',
+                                                 aggfunc='count',
+                                                 margins=True,
+                                                 margins_name='Total')
+print(pivot_sales_shipmode)
+
+pivot_sales_segment = df_apres_exec.pivot_table(values='Sales',
+                                                index='Segment',
+                                                margins=True,
+                                                margins_name='Total',
+                                                aggfunc='count')
+print(pivot_sales_segment)
+
+pivot_sales_category = df_apres_exec.pivot_table(values='Sales',
+                                                 index=['Category'],
+                                                 aggfunc='count').sort_values(by=['Sales'],
+                                                                              ascending=False)
+print(pivot_sales_category)
+
+pivot_sales_sub_category = df_apres_exec.pivot_table(values='Sales',
+                                                     index='Sub-Category',
+                                                     aggfunc='count').sort_values(by=['Sales'],
+                                                                                  ascending=False)
+print(pivot_sales_sub_category)
