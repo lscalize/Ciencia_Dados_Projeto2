@@ -3,6 +3,8 @@
 ## Visão Geral
 Este projeto visa analisar, modelar e visualizar dados de vendas de uma empresa fictícia ao longo de 4 anos. Inclui importação e análise de dados, tratamento de valores nulos, criação de gráficos e tabelas pivot, e análise temporal. Utilizando Python e bibliotecas como `pandas` e `matplotlib`, criamos gráficos para entender as tendências de vendas por ano, mês, categoria e produto.
 
+## Base de dados
+Fonte: https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting
 
 ## Descrição
 
