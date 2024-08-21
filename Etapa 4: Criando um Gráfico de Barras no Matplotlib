@@ -1,0 +1,13 @@
+# 1. Importando bibliotecas para visualização
+import matplotlib.pyplot as plt
+import numpy as np
+
+# 2. Criando o gráfico de barras
+df_apres_exec.groupby("Ano")['Sales'].sum().plot.bar()
+
+# Plot com personalização
+fig, ax = plt.subplots(figsize=(9,5))
+ax.bar(df_apres_exec.groupby("Ano")['Sales'].sum().index,
+       df_apres_exec.groupby("Ano")['Sales'].sum().values,
+       color='green')
+plt.show()
