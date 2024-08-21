@@ -1,0 +1,43 @@
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Configurando o tamanho da figura
+fig, ax = plt.subplots(figsize=(16, 6))
+
+# Definindo a altura das barras
+hgt = 0.2
+
+# Obtendo o número de itens
+qtd_itens = len(top_n_itens)
+
+# Criando o gráfico de barras horizontais para cada ano
+ax.barh(np.arange(0, qtd_itens) - hgt / 2,
+        itens_ano_grafico[itens_ano_grafico.Ano == 2018].Sales_y.values,
+        align='center',
+        height=hgt,
+        label=2018)
+
+ax.barh(np.arange(0, qtd_itens) + hgt / 2,
+        itens_ano_grafico[itens_ano_grafico.Ano == 2017].Sales_y.values,
+        align='center',
+        height=hgt,
+        label=2017)
+
+ax.barh(np.arange(0, qtd_itens) - hgt - hgt / 2,
+        itens_ano_grafico[itens_ano_grafico.Ano == 2016].Sales_y.values,
+        align='center',
+        height=hgt,
+        label=2016)
+
+ax.barh(np.arange(0, qtd_itens) + hgt + hgt / 2,
+        itens_ano_grafico[itens_ano_grafico.Ano == 2015].Sales_y.values,
+        align='center',
+        height=hgt,
+        label=2015)
+
+# Ajustando o gráfico
+ax.invert_yaxis()  # Labels read top-to-bottom
+ax.legend()
+
+# Exibindo o gráfico
+plt.show()
